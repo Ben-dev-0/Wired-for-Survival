@@ -16,4 +16,9 @@ public class UI : MonoBehaviour {
         Debug.Log("Event " + text);
         label.text = text;
     }
+
+    public void SetLabelText(int n) {
+        Debug.Log("Event " + n);
+        label.text = String.Format("{0}",n);
+    }
 }
