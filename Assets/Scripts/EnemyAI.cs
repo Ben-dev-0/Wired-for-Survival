@@ -70,12 +70,11 @@ public class EnemyAI : MonoBehaviour
         isStunned = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
-            // Damage the player
-            collision.GetComponent<HealthManager>().TakeDamage(1);
+            collision.collider.GetComponent<HealthManager>().TakeDamage(1);
         }
     }
 }

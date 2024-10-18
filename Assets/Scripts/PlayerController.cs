@@ -15,11 +15,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        // Update animator parameters
+
         if (animator != null)
         {
             animator.SetFloat("Horizontal", movement.x);
@@ -30,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Movement
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

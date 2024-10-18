@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ElectricTrap : MonoBehaviour
@@ -20,5 +21,14 @@ public class ElectricTrap : MonoBehaviour
     IEnumerator TrapEffect()
     {
         yield return new WaitForSeconds(0.5f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("StunProjectile"))
+        {
+            ActivateTrap();
+            Destroy(other.gameObject); 
+        }
     }
 }
