@@ -18,18 +18,27 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if (movement.sqrMagnitude > 1)
+        {
+            movement = movement.normalized;
+        }
 
         if (animator != null)
         {
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("MoveX", movement.x);
+            animator.SetFloat("MoveY", movement.y);
             animator.SetFloat("Speed", movement.sqrMagnitude);
+
+            if (movement != Vector2.zero)
+            {
+                animator.SetFloat("LastMoveX", movement.x);
+                animator.SetFloat("LastMoveY", movement.y);
+            }
         }
     }
 
     void FixedUpdate()
     {
-
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

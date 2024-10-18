@@ -14,9 +14,14 @@ public class EnemyAI : MonoBehaviour
     private bool isStunned = false;
     public float stunDuration = 3f;
 
+    private Animator animator;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
+
+        animator.SetBool("IsPatrolling", true);
     }
 
     void Update()
@@ -26,6 +31,13 @@ public class EnemyAI : MonoBehaviour
         if (isChasing)
         {
             ChasePlayer();
+
+            if (Vector2.Distance(transform.position, player.position) > detectionRadius)
+            {
+                isChasing = false;
+                animator.SetBool("IsChasing", false);
+                animator.SetBool("IsPatrolling", true);
+            }
         }
         else
         {
@@ -36,6 +48,9 @@ public class EnemyAI : MonoBehaviour
 
     void Patrol()
     {
+        animator.SetBool("IsPatrolling", true);
+        animator.SetBool("IsChasing", false);
+
         Transform targetPoint = patrolPoints[currentPoint];
         transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
 
@@ -50,6 +65,8 @@ public class EnemyAI : MonoBehaviour
         if (Vector2.Distance(transform.position, player.position) < detectionRadius)
         {
             isChasing = true;
+            animator.SetBool("IsChasing", true);
+            animator.SetBool("IsPatrolling", false);
         }
     }
 
@@ -66,8 +83,17 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Stunned()
     {
         isStunned = true;
+        isChasing = false;
+        animator.SetBool("IsStunned", true);
+        animator.SetBool("IsChasing", false);
+        animator.SetBool("IsPatrolling", false);
+
         yield return new WaitForSeconds(stunDuration);
+
         isStunned = false;
+        animator.SetBool("IsStunned", false);
+
+        animator.SetBool("IsPatrolling", true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
