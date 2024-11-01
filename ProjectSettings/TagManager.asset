@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - ElectricTrap
+  - StunProjectile
   layers:
   - Default
   - TransparentFX
