@@ -8,7 +8,7 @@ public class HudController : MonoBehaviour {
     UIDocument doc;
     ProgressBar ammoBar;
 
-    void Start() {
+    void Awake() {
         doc = gameObject.GetComponent<UIDocument>();
         ammoBar = doc.rootVisualElement.Q("ammo-bar") as ProgressBar;
     }
