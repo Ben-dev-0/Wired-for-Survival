@@ -1,5 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/ammobar1.uss?fileID=7433441132597879392&amp;guid=98b53c9ee10f7ad4eb0150e68aebe67a&amp;type=3#ammobar1" />
+    <Style src="project://database/Assets/UI%20Toolkit/hud.uss?fileID=7433441132597879392&amp;guid=98b53c9ee10f7ad4eb0150e68aebe67a&amp;type=3#hud" />
     <ui:VisualElement style="flex-grow: 1;" />
-    <ui:ProgressBar value="5" name="ammo-bar" high-value="10" class="ammo-bar" style="max-width: 145px;" />
+    <ui:VisualElement name="status-bars" style="flex-grow: 1; max-height: 34px; max-width: 315px; flex-direction: row; width: 315px; height: 34px;">
+        <ui:ProgressBar value="5" name="ammo-bar" high-value="10" class="ammo-bar" style="max-width: 145px; width: 139px;" />
+        <ui:ProgressBar value="5" name="health-bar" high-value="10" class="health-bar" style="max-width: 145px; width: 139px; flex-direction: column;" />
+    </ui:VisualElement>
 </ui:UXML>

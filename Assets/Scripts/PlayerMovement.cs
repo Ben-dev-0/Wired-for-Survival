@@ -6,11 +6,11 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour {
     [SerializeField] float moveSpeed;
     private Rigidbody2D rb;
-    private Animator animator;
+    //private Animator animator;
     
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     void Update() {
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
         direction.Normalize();
         rb.velocity = direction * moveSpeed;
 
+        /*
         if (animator != null) {
             animator.SetFloat("MoveX", direction.x);
             animator.SetFloat("MoveY", direction.y);
@@ -27,6 +28,6 @@ public class PlayerMovement : MonoBehaviour {
                 animator.SetFloat("LastMoveX", direction.x);
                 animator.SetFloat("LastMoveY", direction.y);
             }
-        }
+        }*/
     }
 }

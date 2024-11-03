@@ -32,7 +32,9 @@ public class StunProjectile : MonoBehaviour {
         else if (collision.CompareTag("ElectricTrap")) {
             //collision.GetComponent<ElectricTrap>().ActivateTrap();
         }
-
+        else if (collision.CompareTag("Player")) {
+            return;
+        }
         Destroy(gameObject);
     }
 }

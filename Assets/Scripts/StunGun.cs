@@ -46,9 +46,11 @@ public class StunGun : MonoBehaviour {
 
     IEnumerator Cooldown() {
         isCoolingDown = true;
+        hud.SetAmmoCooldownColor(true);
         yield return new WaitForSeconds(cooldownTime);
         currentAmmo = maxAmmo;
         hud.SetAmmo(currentAmmo);
+        hud.SetAmmoCooldownColor(false);
         isCoolingDown = false;
     }
 }
