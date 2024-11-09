@@ -16,9 +16,8 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
         Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
         direction.Normalize();
-        rb.velocity = direction * moveSpeed;
+        rb.MovePosition((Vector2)transform.position + direction * moveSpeed * Time.deltaTime);
         animator.SetFloat("xMovement", direction.x);
         animator.SetFloat("yMovement", direction.y);
-        Debug.Log(direction);
     }
 }

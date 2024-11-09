@@ -12,10 +12,15 @@ public class PlayerKnockback : MonoBehaviour {
     private Vector3 knockbackDirection;
     private float knockbackMagnitude;
     private int enemyCollidedWithFrames = 0;
+    private Rigidbody2D rb;
+
+    void Start() {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update() {
         if (knockbackMagnitude > 0) {
-            gameObject.transform.Translate(knockbackDirection * knockbackMagnitude * Time.deltaTime, Space.World);
+            rb.MovePosition(transform.position + knockbackDirection * knockbackMagnitude * Time.deltaTime);
             knockbackMagnitude -= deceleration * Time.deltaTime;
         }
     }
