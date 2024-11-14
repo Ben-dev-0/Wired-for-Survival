@@ -1,20 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
-    [SerializeField] private float speed = 2f;
     [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private float stunDuration = 3f;
-    private Rigidbody2D rb;
     private int currentPoint = 0;
     private Transform playerPos;
+    private NavMeshAgent agent;
     private bool isChasing = false;
     private bool isStunned = false;
 
     void Start() {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     void Update() {
@@ -33,8 +35,7 @@ public class EnemyAI : MonoBehaviour {
 
     void Patrol() {
         Transform targetPoint = patrolPoints[currentPoint];
-        Vector3 direction = (targetPoint.position - transform.position).normalized;
-        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+        agent.SetDestination(targetPoint.position);
 
         if (Vector2.Distance(transform.position, targetPoint.position) < 0.2f) {
             currentPoint = (currentPoint + 1) % patrolPoints.Length;
@@ -48,8 +49,7 @@ public class EnemyAI : MonoBehaviour {
     }
 
     void ChasePlayer() {
-        Vector3 direction = (playerPos.position - transform.position).normalized;
-        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+        agent.SetDestination(playerPos.position);
     }
 
     public void StunEnemy() {
