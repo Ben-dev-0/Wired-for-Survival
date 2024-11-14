@@ -6,28 +6,23 @@ public class EnemyAI : MonoBehaviour {
     [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private float stunDuration = 3f;
+    private Rigidbody2D rb;
     private int currentPoint = 0;
     private Transform playerPos;
     private bool isChasing = false;
     private bool isStunned = false;
-    //private Animator animator;
 
     void Start() {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        // animator = GetComponent<Animator>();
-        // animator.SetBool("IsPatrolling", true);
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
         if (isStunned) return;
-
         if (isChasing) {
             ChasePlayer();
-
             if (Vector2.Distance(transform.position, playerPos.position) > detectionRadius) {
                 isChasing = false;
-                // animator.SetBool("IsChasing", false);
-                // animator.SetBool("IsPatrolling", true);
             }
         }
         else {
@@ -37,11 +32,9 @@ public class EnemyAI : MonoBehaviour {
     }
 
     void Patrol() {
-        // animator.SetBool("IsPatrolling", true);
-        // animator.SetBool("IsChasing", false);
-
         Transform targetPoint = patrolPoints[currentPoint];
-        transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
+        Vector3 direction = (targetPoint.position - transform.position).normalized;
+        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, targetPoint.position) < 0.2f) {
             currentPoint = (currentPoint + 1) % patrolPoints.Length;
@@ -51,13 +44,12 @@ public class EnemyAI : MonoBehaviour {
     void DetectPlayer() {
         if (Vector2.Distance(transform.position, playerPos.position) < detectionRadius) {
             isChasing = true;
-            // animator.SetBool("IsChasing", true);
-            // animator.SetBool("IsPatrolling", false);
         }
     }
 
     void ChasePlayer() {
-        transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
+        Vector3 direction = (playerPos.position - transform.position).normalized;
+        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
     }
 
     public void StunEnemy() {
@@ -67,15 +59,7 @@ public class EnemyAI : MonoBehaviour {
     IEnumerator Stunned() {
         isStunned = true;
         isChasing = false;
-        // animator.SetBool("IsStunned", true);
-        // animator.SetBool("IsChasing", false);
-        // animator.SetBool("IsPatrolling", false);
-
         yield return new WaitForSeconds(stunDuration);
-
         isStunned = false;
-        // animator.SetBool("IsStunned", false);
-
-        // animator.SetBool("IsPatrolling", true);
     }
 }

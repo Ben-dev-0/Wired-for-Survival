@@ -20,7 +20,7 @@ public class PlayerKnockback : MonoBehaviour {
 
     void Update() {
         if (knockbackMagnitude > 0) {
-            rb.MovePosition(transform.position + knockbackDirection * knockbackMagnitude * Time.deltaTime);
+            rb.AddForce(knockbackMagnitude * knockbackDirection * Time.deltaTime);
             knockbackMagnitude -= deceleration * Time.deltaTime;
         }
     }
