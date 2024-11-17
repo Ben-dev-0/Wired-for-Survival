@@ -59,7 +59,10 @@ public class EnemyAI : MonoBehaviour {
     IEnumerator Stunned() {
         isStunned = true;
         isChasing = false;
+        Vector3 destination = agent.destination;
+        agent.SetDestination(gameObject.transform.position);
         yield return new WaitForSeconds(stunDuration);
         isStunned = false;
+        agent.SetDestination(destination);
     }
 }
