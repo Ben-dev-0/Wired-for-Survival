@@ -18,6 +18,7 @@ public class LifeSupportTimer : MonoBehaviour
         
     }
 
+    /*
     public TextMeshProUGUI timerText;
     private float timeRemaining = 60f; // 1 minute
     private bool timerIsRunning = false;
@@ -63,4 +64,5 @@ public class LifeSupportTimer : MonoBehaviour
     {
         timerText.text = $"Time Remaining: {timeRemaining}";
     }
+    */
 }
