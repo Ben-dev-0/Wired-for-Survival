@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; // Make sure to include this for TextMeshPro components
+//using TMPro; // Make sure to include this for TextMeshPro components
 
 
 public class LifeSupportTimer : MonoBehaviour
