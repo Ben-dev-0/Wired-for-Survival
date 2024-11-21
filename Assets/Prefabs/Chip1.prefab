@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2202049796694251818}
   - component: {fileID: 7392875350487166593}
   m_Layer: 0
-  m_Name: CHip1
+  m_Name: Chip1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6650764803483261199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23143b2d0cdcea458e1685b456eb576, type: 3}
+  m_Script: {fileID: 11500000, guid: 99275f3c5287349a2a404a86bea6f43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeHolderObject: {fileID: 0}
+  placeHolderObject: {fileID: 850973491460310211, guid: 58d2d3e1b0e614a12b3435fc052dfd80, type: 3}
   rightSpot: 0
