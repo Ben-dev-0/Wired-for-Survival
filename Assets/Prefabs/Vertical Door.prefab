@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2126401793180673217}
   - component: {fileID: 8992263880773786999}
   - component: {fileID: 5399114403257998273}
-  - component: {fileID: 51464486631644}
   - component: {fileID: 2609065684188604798}
+  - component: {fileID: 3294697268661649865}
   m_Layer: 3
   m_Name: Vertical Door
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_Size: {x: 3.2, y: 3.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8992263880773786999
@@ -144,19 +144,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -1.3}
   serializedVersion: 2
   m_Radius: 4.2
---- !u!114 &51464486631644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8401208424170126057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93e7766a149295e4a87058454d4f833f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startLocked: 0
 --- !u!61 &2609065684188604798
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,3 +189,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.13, y: 0.67}
   m_EdgeRadius: 0
+--- !u!114 &3294697268661649865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401208424170126057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3793030f84c448969634e8df8537ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLocked: 0

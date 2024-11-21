@@ -140,8 +140,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4601798095835114881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23143b2d0cdcea458e1685b456eb576, type: 3}
+  m_Script: {fileID: 11500000, guid: 99275f3c5287349a2a404a86bea6f43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeHolderObject: {fileID: 0}
+  placeHolderObject: {fileID: 1098393924199692211, guid: 497f559689f3a41aa84d48cfbd92334c, type: 3}
   rightSpot: 0
