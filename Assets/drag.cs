@@ -45,7 +45,10 @@ public class drag : MonoBehaviour
         // Check if the draggable object's position is close to the placeholder's position
         // You can adjust the threshold for what is considered "over" the placeholder
         float snapThreshold = 40.0f; // Customize this threshold based on your needs
-        rightSpot=true;
+        if(Vector3.Distance(transform.position, placeHolderObject.transform.position) < snapThreshold){
+            rightSpot=true;
+        }
+       
         return Vector3.Distance(transform.position, placeHolderObject.transform.position) < snapThreshold;
         
     }
