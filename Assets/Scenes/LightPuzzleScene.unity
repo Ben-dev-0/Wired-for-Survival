@@ -242,10 +242,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 665816811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23143b2d0cdcea458e1685b456eb576, type: 3}
+  m_Script: {fileID: 11500000, guid: ec92faa7b02edc04fa7871459dc0ba3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeHolderObject: {fileID: 1718924960}
+  placeHolderObject: {fileID: 0}
+  rightSpot: 0
 --- !u!61 &665816813
 BoxCollider2D:
   m_ObjectHideFlags: 0
