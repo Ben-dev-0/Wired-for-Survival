@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level4.unity
     guid: 21a928e61c1b74149874ba3481e4d746
+  - enabled: 1
+    path: Assets/Scenes/DoorOpenPuzzle.unity
+    guid: 1e03eec016675264dbd9a8062701c54f
+  - enabled: 1
+    path: Assets/Scenes/Alarm.unity
+    guid: e7df4baa65c3774409ec3ba3f3e6b7e6
+  - enabled: 1
+    path: Assets/Scenes/LightPuzzleScene.unity
+    guid: c4eb7090fcc63754ab8adb13ee1e24d9
   m_configObjects: {}

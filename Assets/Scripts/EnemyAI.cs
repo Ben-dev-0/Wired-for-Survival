@@ -11,15 +11,22 @@ public class EnemyAI : MonoBehaviour {
     private NavMeshAgent agent;
     private bool isChasing = false;
     private bool isStunned = false;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     void Start() {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update() {
+        animator.SetBool("Moving", agent.velocity.magnitude > 0.01f);
+        spriteRenderer.flipX = agent.velocity.x < 0f;
+
         if (isStunned) return;
         if (isChasing) {
             ChasePlayer();
@@ -28,7 +35,8 @@ public class EnemyAI : MonoBehaviour {
             }
         }
         else {
-            Patrol();
+            if (patrolPoints.Length > 0)
+                Patrol();
             DetectPlayer();
         }
     }

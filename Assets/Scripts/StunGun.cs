@@ -10,10 +10,17 @@ public class StunGun : MonoBehaviour {
     private int currentAmmo;
     private HudController hud;
 
+    private PauseMenu pauseScript;
     void Start() {
         currentAmmo = maxAmmo;
         hud = transform.Find("Hud").gameObject.GetComponent<HudController>();
         hud.SetMaxAmmo(maxAmmo);
+
+        pauseScript = PauseMenu.Instance;
+        if (pauseScript == null)
+        {
+            Debug.LogError("PauseMenu instance not found! Make sure the PauseMenu script is in the scene.");
+        }
     }
 
     void Update() {
@@ -21,7 +28,7 @@ public class StunGun : MonoBehaviour {
             hud.IncrementAmmo(Time.deltaTime * (maxAmmo/cooldownTime));
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && currentAmmo > 0 && !isCoolingDown) {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && currentAmmo > 0 && !isCoolingDown && !pauseScript.IsPaused() ) {
             Shoot();
         }
     }
